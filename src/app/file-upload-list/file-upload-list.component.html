@@ -1,0 +1,13 @@
+<mat-list>
+  <mat-list-item *ngFor="let item of fileUploadService.files$$ | async">
+    <div mat-line>
+      {{item.file.name}}
+      <button mat-icon-button (click)="item.cancel()" *ngIf="item.progress !== 100 && !item.canceled">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-line>
+      <mat-progress-bar mode="determinate" [value]="item.progress"></mat-progress-bar>
+    </div>
+  </mat-list-item>
+</mat-list>
